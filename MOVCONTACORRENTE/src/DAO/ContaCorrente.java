@@ -37,21 +37,21 @@ public class ContaCorrente {
             
     }
       public String dadosSQLValues(){
-        String dadosContaCorrente = "'"
-            + this.getnum_agencia()+ "', '" 
-            + this.getnum_conta()+ "', '" 
-            + this.getid_cli()+ "', '" 
-            + this.getsaldo()+ "'";
+        String dadosContaCorrente =
+            "'" + this.getnum_agencia()+ "'," +
+            "'" + this.getnum_conta()+ "'," +
+            "'" + this.getid_cli()+ "'," +
+            "'"  + this.getsaldo()+  "'";
         return dadosContaCorrente;
 }
       
       public String alteraDadoSQLValues(){
             String dadosContaCorrente;
             dadosContaCorrente = 
-            "Número Agência = '" + this.getnum_agencia() +  "'," +
-            "Número Conta Corrente = '" + this.getnum_conta()+ "'," +
-            "Id Cliente = '" + this.getid_cli() + "'," +
-            "Saldo = '"+ this.getsaldo()+ "',";
+            "NUM_AGE = '" + this.getnum_agencia() +  "'," +
+            "NUM_CC = '" + this.getnum_conta() + "'," +
+            "ID_CLI = '" + this.getid_cli() + "'," +
+            "SALDO = '"+ this.getsaldo()+ "'";
                         
             return dadosContaCorrente;
         }

@@ -229,7 +229,7 @@ Usuarios usuarios_tela = new Usuarios();
               usuarios_tela.setSenha(jTextField2.getText());
               usuarios_tela.setId(jTextField3.getText());
               
-              objcon.alteraRegistroJFBD("Usuários", usuarios_tela.alteraDadoSQLValues(), "COD_CLIENTE=" + jTextField3.getText());
+              objcon.alteraRegistroJFBD("USUARIOS", usuarios_tela.alteraDadoSQLValues(), "ID = '" + jTextField3.getText() + "'");
                   
  
           }
@@ -238,7 +238,7 @@ Usuarios usuarios_tela = new Usuarios();
           if (operacaoAtivaGlobal.equals(operacao))
           {
                 connectDAO objcon = new connectDAO();
-                usuarios_tela = objcon.pesquisaUsuarioJFBD("USUARIOS","COD+USUARIO = " + jTextField3.getText() + "'");
+                usuarios_tela = objcon.pesquisaUsuarioJFBD("USUARIOS","ID = '" + jTextField3.getText() + "'");
 
                 usuarios_tela.setNumero_agencia(Integer.parseInt(jTextField5.getText()));
                 usuarios_tela.setNumero_conta(Integer.parseInt(jTextField1.getText()));
@@ -254,6 +254,8 @@ Usuarios usuarios_tela = new Usuarios();
                 jTextField2.setVisible(true);
                 jTextField3.setVisible(true);
                 jTextField5.setVisible(true);
+                jButton2.setVisible(false);
+                jButton3.setVisible(false);
                 jButton1.setText("Alterar");
                 operacaoAtivaGlobal = "Alteração";
                 

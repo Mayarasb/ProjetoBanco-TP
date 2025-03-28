@@ -216,7 +216,7 @@ public class connectDAO {
     public ContaCorrente pesquisaContaCorrenteJFBD(String tabela, String pesquisaId){
          
         ContaCorrente ContaCorrenteReturn = new ContaCorrente();
-        String tabelaSGBD = "CONTA CORRENTE";
+        String tabelaSGBD = "CONTACORRENTE";
         if(tabela.equals(tabelaSGBD)){
          
             con = connectDB();
@@ -242,7 +242,7 @@ public class connectDAO {
                         ContaCorrenteReturn.setnum_agencia(dados.getInt(1));
                         ContaCorrenteReturn.setnum_conta(dados.getInt(2));
                         ContaCorrenteReturn.setid_cli(dados.getInt(3));
-                        ContaCorrenteReturn.setsaldo(dados.getFloat(10));
+                        ContaCorrenteReturn.setsaldo(dados.getFloat(4));
                         
                        
                     }
@@ -269,7 +269,7 @@ public class connectDAO {
     public Historicos pesquisaHistoricosJFBD (String tabela, String pesquisaId){
          
         Historicos historicoReturn = new Historicos();
-        String tabelaSGBD = "HISTÓRICOS";
+        String tabelaSGBD = "HISTORICOS";
         if(tabela.equals(tabelaSGBD)){
          
             con = connectDB();
@@ -317,7 +317,7 @@ public class connectDAO {
 public Movimentacao pesquisaMovimentacaoJFBD (String tabela, String pesquisaId){
          
         Movimentacao movimentacaoReturn = new Movimentacao();
-        String tabelaSGBD = "MOVIMENTAÇÕES";
+        String tabelaSGBD = "MOVIMENTACAO";
         if(tabela.equals(tabelaSGBD)){
          
             con = connectDB();
@@ -373,7 +373,7 @@ public Movimentacao pesquisaMovimentacaoJFBD (String tabela, String pesquisaId){
 public Usuarios pesquisaUsuarioJFBD (String tabela, String pesquisaId){
          
         Usuarios usuariosReturn = new Usuarios();
-        String tabelaSGBD = "MOVIMENTAÇÕES";
+        String tabelaSGBD = "USUARIOS";
         if(tabela.equals(tabelaSGBD)){
          
             con = connectDB();

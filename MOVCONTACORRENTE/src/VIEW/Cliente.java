@@ -476,6 +476,8 @@ String operacaoAtivaGlobal ="Nenhum";
             cliente_tela.setcidade(Txt_cidade.getText());
             cliente_tela.setuf(Txt_uf.getText());
             
+            
+            
 
             
             objcon.alteraRegistroJFBD("Clientes", cliente_tela.alteraDadoSQLValues(), "ID_CLI ='" + Txt_id.getText()+"'");
@@ -537,7 +539,11 @@ String operacaoAtivaGlobal ="Nenhum";
             Txt_cidade.setVisible(true);
             Txt_uf.setVisible(true);
             Btn_Cadastrar.setText("Alterar");
+            Btn_Ler.setVisible(false);
+            Btn_limparTela.setVisible(false);
             operacaoAtivaGlobal = "Alteração";
+           
+            
           
           }
           

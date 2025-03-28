@@ -34,12 +34,12 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
          operacao = "Alterar";
         if(operacaoAtiva.equals(operacao)){
             jLabel1.setVisible(false);
-            jLabel2.setVisible(false);
-            jLabel3.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(false);
             jLabel4.setVisible(false);
             
             jTextField1.setVisible(false);
-            jTextField2.setVisible(false);
+            jTextField2.setVisible(true);
             jTextField3.setVisible(false);
             jTextField4.setVisible(false);
             jButton1.setText(operacaoAtivaGlobal + " BD");
@@ -86,6 +86,12 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
 
         jLabel3.setText("Id do Cliente");
 
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Saldo");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -128,11 +134,12 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextField1)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField2)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addGap(56, 56, 56)
@@ -142,7 +149,7 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(jLabel5)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,6 +216,10 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
             contacorrente_tela.setnum_conta(Integer.parseInt(jTextField2.getText()));
             contacorrente_tela.setid_cli(Integer.parseInt(jTextField3.getText()));
             contacorrente_tela.setsaldo(Float.parseFloat(jTextField4.getText()));
+            
+            jButton1.setText("Alterar");
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
 
              connectDAO objcon = new connectDAO();
               objcon.connectDB();
@@ -226,14 +237,14 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
             contacorrente_tela.setid_cli(Integer.parseInt(jTextField3.getText()));
             contacorrente_tela.setsaldo(Float.parseFloat(jTextField4.getText()));
             
-            objcon.alteraRegistroJFBD("Conta Corrente", contacorrente_tela.alteraDadoSQLValues(), "COD_CONTACORRENTE=" + jTextField2.getText());    
+            objcon.alteraRegistroJFBD("CONTACORRENTE", contacorrente_tela.alteraDadoSQLValues(), " NUM_CC = '" + jTextField2.getText() + "'");    
           }
           
           operacao = "Alterar";
           if (operacaoAtivaGlobal.equals(operacao))
           {
               connectDAO objcon = new connectDAO();
-              contacorrente_tela = objcon.pesquisaContaCorrenteJFBD("CONTA CORRENTE","COD+CONTA CORRENTE = " + jTextField2.getText() + "'");
+              contacorrente_tela = objcon.pesquisaContaCorrenteJFBD("CONTACORRENTE"," NUM_CC = '" + jTextField2.getText() + "'");
               
               jTextField1.setText(Integer.toString(contacorrente_tela.getnum_agencia()));
               jTextField2.setText(Integer.toString( contacorrente_tela.getnum_conta()));
@@ -249,7 +260,10 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
             jTextField2.setVisible(true);
             jTextField3.setVisible(true);
             jTextField4.setVisible(true);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
             jButton1.setText("Alterar");
+            
             operacaoAtivaGlobal = "Alteração";
           
           }
@@ -260,6 +274,10 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
               
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments

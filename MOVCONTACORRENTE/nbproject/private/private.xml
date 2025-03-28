@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alunos/Documents/MOVCONTACORRENTE%201/MOVCONTACORRENTE/src/DAO/Agencias.java</file>
-            <file>file:/C:/Users/Alunos/Documents/MOVCONTACORRENTE%201/MOVCONTACORRENTE/src/DAO/Clientes.java</file>
-            <file>file:/C:/Users/Alunos/Documents/MOVCONTACORRENTE%201/MOVCONTACORRENTE/src/VIEW/Cad_Agencias.java</file>
-            <file>file:/C:/Users/Alunos/Documents/MOVCONTACORRENTE%201/MOVCONTACORRENTE/src/DAO/connectDAO.java</file>
-            <file>file:/C:/Users/Alunos/Documents/MOVCONTACORRENTE%201/MOVCONTACORRENTE/src/VIEW/Menu.java</file>
-            <file>file:/C:/Users/Alunos/Documents/MOVCONTACORRENTE%201/MOVCONTACORRENTE/src/VIEW/Cliente.java</file>
+            <file>file:/C:/Users/Alunos/Desktop/ProjetoBanco---TP/MOVCONTACORRENTE/src/DAO/connectDAO.java</file>
+            <file>file:/C:/Users/Alunos/Desktop/ProjetoBanco---TP/MOVCONTACORRENTE/src/DAO/Usuarios.java</file>
+            <file>file:/C:/Users/Alunos/Desktop/ProjetoBanco---TP/MOVCONTACORRENTE/src/VIEW/Cad_Usuarios.java</file>
+            <file>file:/C:/Users/Alunos/Desktop/ProjetoBanco---TP/MOVCONTACORRENTE/src/VIEW/Cliente.java</file>
+            <file>file:/C:/Users/Alunos/Desktop/ProjetoBanco---TP/MOVCONTACORRENTE/src/DAO/Clientes.java</file>
         </group>
     </open-files>
 </project-private>

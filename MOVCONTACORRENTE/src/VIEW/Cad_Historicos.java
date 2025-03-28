@@ -131,13 +131,13 @@ String operacaoAtivaGlobal ="Nenhum";
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,7 +166,7 @@ String operacaoAtivaGlobal ="Nenhum";
               historicos_tela.setId_His(Integer.parseInt(jTextField1.getText()));
               historicos_tela.setDesc_historico(jTextField2.getText());
               
-          objcon.alteraRegistroJFBD("Históricos",historicos_tela.alteraDadoSQLValues(), "COD_HISTÓRICO=" + jTextField1.getText());
+          objcon.alteraRegistroJFBD("HISTORICOS",historicos_tela.alteraDadoSQLValues(), "ID_HIS = '" + jTextField1.getText() + "'");
                                   
           
           }
@@ -175,16 +175,19 @@ String operacaoAtivaGlobal ="Nenhum";
           if (operacaoAtivaGlobal.equals(operacao))
           {
             connectDAO objcon = new connectDAO();
-            historicos_tela= objcon.pesquisaHistoricosJFBD("HISTÓRICOS","COD+HISTÓRICO = " + jTextField1.getText() + "'");
+            Historicos historicos_tela = new Historicos();
+            historicos_tela= objcon.pesquisaHistoricosJFBD("HISTORICOS"," ID_HIS = '" + jTextField1.getText() + "'");
           
             jTextField1.setText(Integer.toString(historicos_tela.getId_His()));
             jTextField2.setText( historicos_tela.getdesc_historico());
         
+            jLabel1.setVisible(true);
             jLabel2.setVisible(true);
-            jLabel3.setVisible(true);
             
             jTextField1.setVisible(true);
             jTextField2.setVisible(true);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
             jButton1.setText("Alterar");
             operacaoAtivaGlobal = "Alteração";
           }

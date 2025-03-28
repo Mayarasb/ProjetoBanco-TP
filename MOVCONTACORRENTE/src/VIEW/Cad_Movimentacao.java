@@ -39,15 +39,15 @@ public class Cad_Movimentacao extends javax.swing.JFrame {
         }
         operacao = "Alterar";
         if(operacaoAtiva.equals(operacao)){
-            jLabel2.setVisible(true);
-            jLabel3.setVisible(true);
-            jLabel4.setVisible(true);
-            jLabel5.setVisible(false);
-            jLabel6.setVisible(true);
-            jLabel7.setVisible(true);
-            jLabel9.setVisible(true);
-            jLabel8.setVisible(true);
-            jLabel10.setVisible(true);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel9.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel10.setVisible(false);
             
             jTextField1.setVisible(false);
             jTextField3.setVisible(false);
@@ -298,7 +298,7 @@ public class Cad_Movimentacao extends javax.swing.JFrame {
          //Inserção no banco de dados
             connectDAO objcon = new connectDAO();
             objcon.connectDB();
-            objcon.insereRegistroJFBD("MOVIMENTAÇÃO", movimentacao_tela.dadosSQLValues());
+            objcon.insereRegistroJFBD("MOVIMENTACAO", movimentacao_tela.dadosSQLValues());
           }
         
        operacao = "Alteração";
@@ -317,7 +317,7 @@ public class Cad_Movimentacao extends javax.swing.JFrame {
         movimentacao_tela.setValor(Float.parseFloat(jTextField9.getText()));
         movimentacao_tela.setSaldo(Float.parseFloat(jTextField6.getText()));
         
-        objcon.alteraRegistroJFBD("Movimentação", movimentacao_tela.alteraDadoSQLValues(), "COD_MOVIMENTACAO=" + jTextField2.getText());
+        objcon.alteraRegistroJFBD("MOVIMENTACAO", movimentacao_tela.alteraDadoSQLValues(), "DATA_MOV= '" + jTextField2.getText() + "'");
                   
  
         }
@@ -326,7 +326,7 @@ public class Cad_Movimentacao extends javax.swing.JFrame {
           if (operacaoAtivaGlobal.equals(operacao))
           {
             connectDAO objcon = new connectDAO();
-            movimentacao_tela = objcon.pesquisaMovimentacaoJFBD("MOVIMENTAÇÃO","COD+MOVIMENTAÇAO = " + jTextField2.getText() + "'");
+            movimentacao_tela = objcon.pesquisaMovimentacaoJFBD("MOVIMENTACAO","DATA_MOV = '" + jTextField2.getText() + "'");
             jTextField3.setText(Integer.toString(movimentacao_tela.getNum_age()));
             jTextField1.setText(Integer.toString( movimentacao_tela.getNum_conta()));
             jTextField4.setText(movimentacao_tela.getDocumento());
@@ -340,7 +340,7 @@ public class Cad_Movimentacao extends javax.swing.JFrame {
             jLabel2.setVisible(true);
             jLabel3.setVisible(true);
             jLabel4.setVisible(true);
-            jLabel5.setVisible(false);
+            jLabel5.setVisible(true);
             jLabel6.setVisible(true);
             jLabel7.setVisible(true);
             jLabel9.setVisible(true);

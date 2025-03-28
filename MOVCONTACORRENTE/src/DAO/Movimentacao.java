@@ -120,15 +120,15 @@ public class Movimentacao {
       public String alteraDadoSQLValues(){
             String dadosMovimentacao;
             dadosMovimentacao = 
-            "Número da Agência = '" + this.getNum_age() +  "'," +
-            "Número da Conta = '" + this.getNum_conta()+ "'," +
-            "Data de movimentação = '" + getData_mov() + "'," +
-            "Documento= '"+ this.getDocumento()+ "'," +
-            "Crédito/Débito = '" +  this.getDebito_credito() +  "'," +    
-            "Id Histórico = '" +  this.getId_His()+ "'," + 
-            "Comp Histórico = '" +  this.getCompl_His()+ "'," + 
-            "Valor = '" + this.getValor() + "'," + 
-            "Saldo = '"  + this.getSaldo()+ "',";
+            "NUM_AGE = '" + this.getNum_age() +  "'," +
+            "NUM_CC = '" + this.getNum_conta()+ "'," +
+            "DATA_MOV = '" + getData_mov() + "'," +
+            "NUM_DOCTO = '"+ this.getDocumento()+ "'," +
+            "DEBITO_CREDITO = '" +  this.getDebito_credito() +  "'," +    
+            "ID_HIS = '" +  this.getId_His()+ "'," + 
+            "COMPL_HIS = '" +  this.getCompl_His()+ "'," + 
+            "VALOR = '" + this.getValor() + "'," + 
+            "SALDO = '"  + this.getSaldo()+ "'";
             
             return dadosMovimentacao;
         }

@@ -36,8 +36,8 @@ public class Historicos {
       public String alteraDadoSQLValues(){
             String dadosHistorico;
             dadosHistorico = 
-            "Id = '" + this.getId_His() +  "'," +
-            "Histórico = '"  + this.getdesc_historico()+ "',";
+            "ID_HIS = '" + this.getId_His() +  "'," +
+            "DES_HIS = '"  + this.getdesc_historico()+ "'";
             
             return dadosHistorico;
         }
