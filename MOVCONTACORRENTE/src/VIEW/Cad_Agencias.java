@@ -67,6 +67,33 @@ public class Cad_Agencias extends javax.swing.JFrame {
             Txt_Telefone.setVisible(false);
             BtnCadastrar.setText(operacaoAtivaGlobal + " BD");
         }
+        
+         operacao = "Excluir";
+        if(operacaoAtiva.equals(operacao)){
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(false);
+            jLabel10.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel9.setVisible(false);
+            jLabel12.setVisible(false);
+            
+            
+            Txt_NumAgencia.setVisible(true);
+            Txt_Nome.setVisible(false);
+            Txt_Cep.setVisible(false);
+            Txt_Endereco.setVisible(false);
+            Txt_Numero.setVisible(false);
+            Txt_Complemento.setVisible(false);
+            Txt_Bairro.setVisible(false);
+            Txt_Cidade.setVisible(false);
+            Txt_Uf.setVisible(false);
+            Txt_Telefone.setVisible(false);
+            BtnCadastrar.setText(operacaoAtivaGlobal + " BD");
+        }
     }
     
     Agencias agencia_tela = new Agencias();
@@ -384,6 +411,79 @@ public class Cad_Agencias extends javax.swing.JFrame {
             Txt_Telefone.setVisible(true);
             BtnCadastrar.setText("Alterar");
             operacaoAtivaGlobal = "Alteração";
+        }
+          
+          operacao = "Exclusão";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+              connectDAO objcon = new connectDAO();
+              objcon.excluiRegistroJFBD("AGENCIAS", "NUM_AGE =" + Txt_NumAgencia.getText());
+              
+                Txt_NumAgencia.setText("");
+                Txt_Nome.setText("");
+                Txt_Endereco.setText("");
+                Txt_Numero.setText("");
+                Txt_Complemento.setText("");
+                Txt_Bairro.setText("");
+                Txt_Cidade.setText("");
+                Txt_Uf.setText("");
+                Txt_Cep.setText("");
+                Txt_Telefone.setText("");
+                this.dispose();
+          }
+          
+          operacao = "Excluir";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+                connectDAO objcon = new connectDAO();
+                agencia_tela = objcon.pesquisaAgenciasJFBD("AGENCIAS"," NUM_AGE = '" + Txt_NumAgencia.getText() + "'");
+
+                Txt_NumAgencia.setText(Integer.toString(agencia_tela.getNum_agencia()));
+                Txt_Nome.setText(agencia_tela.getNome());
+                Txt_Endereco.setText(agencia_tela.getEndereco());
+                Txt_Numero.setText(agencia_tela.getNumero());
+                Txt_Complemento.setText(agencia_tela.getComplemento());
+                Txt_Bairro.setText(agencia_tela.getBairro());
+                Txt_Cidade.setText(agencia_tela.getCidade());
+                Txt_Uf.setText(agencia_tela.getUf());
+                Txt_Cep.setText(agencia_tela.getCep());
+                Txt_Telefone.setText(agencia_tela.getTelefone());
+                
+                        
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel10.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jLabel12.setVisible(true);
+            
+            Txt_NumAgencia.setVisible(true);
+            Txt_Nome.setVisible(true);
+            Txt_Cep.setVisible(true);
+            Txt_Endereco.setVisible(true);
+            Txt_Numero.setVisible(true);
+            Txt_Complemento.setVisible(true);
+            Txt_Bairro.setVisible(true);
+            Txt_Cidade.setVisible(true);
+            Txt_Uf.setVisible(true);
+            Txt_Telefone.setVisible(true);
+            
+            Txt_NumAgencia.setEditable(false);
+            Txt_Nome.setEditable(false);
+            Txt_Cep.setEditable(false);
+            Txt_Endereco.setEditable(false);
+            Txt_Numero.setEditable(false);
+            Txt_Complemento.setEditable(false);
+            Txt_Bairro.setEditable(false);
+            Txt_Cidade.setEditable(false);
+            Txt_Uf.setEditable(false);
+            Txt_Telefone.setEditable(false);
+            BtnCadastrar.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
         }
             
             

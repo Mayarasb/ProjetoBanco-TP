@@ -38,6 +38,16 @@ String operacaoAtivaGlobal ="Nenhum";
             jTextField2.setVisible(false);
             jButton1.setText(operacaoAtivaGlobal + " BD");
         }
+        
+        operacao = "Excluir";
+        if(operacaoAtiva.equals(operacao)){
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(false);
+            
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(false);
+            jButton1.setText(operacaoAtivaGlobal + " BD");
+        }
     }
             
     
@@ -191,6 +201,44 @@ String operacaoAtivaGlobal ="Nenhum";
             jButton1.setText("Alterar");
             operacaoAtivaGlobal = "Alteração";
           }
+           operacao = "Exclusão";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+              connectDAO objcon = new connectDAO();
+              objcon.excluiRegistroJFBD("HISTORICOS","ID_HIS =" + jTextField1.getText());
+              
+              jTextField1.setText("");
+              jTextField2.setText("");
+              this.dispose();
+              
+        }
+          
+          operacao = "Excluir";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+            connectDAO objcon = new connectDAO();
+            Historicos historicos_tela = new Historicos();
+            historicos_tela= objcon.pesquisaHistoricosJFBD("HISTORICOS"," ID_HIS = '" + jTextField1.getText() + "'");
+          
+            jTextField1.setText(Integer.toString(historicos_tela.getId_His()));
+            jTextField2.setText( historicos_tela.getdesc_historico());
+        
+            jLabel1.setVisible(true);
+            jLabel2.setVisible(true);
+            
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
+            
+            jTextField1.setEditable(false);
+            jTextField2.setEditable(false);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
+            jButton1.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
+          }
+          
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

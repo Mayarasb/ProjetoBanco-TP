@@ -30,7 +30,6 @@ String operacaoAtivaGlobal ="Nenhum";
             Txt_id.setVisible(true);
             Txt_telefone.setVisible(true);
             Txt_nome.setVisible(true);
-            Txt_sexo.setVisible(true);
             TxtDataNas.setVisible(true);
             Txt_CPF.setVisible(true);
             Txt_Cnpj.setVisible(true);
@@ -51,7 +50,6 @@ String operacaoAtivaGlobal ="Nenhum";
             jLabel10.setVisible(false);
             jLabel1.setVisible(false);
             jlabel20.setVisible(false);
-            jLabel5.setVisible(false);
             Jlabel16.setVisible(false);
             jLabel12.setVisible(false);
             jLabel13.setVisible(false);
@@ -66,7 +64,6 @@ String operacaoAtivaGlobal ="Nenhum";
             Txt_id.setVisible(true);
             Txt_telefone.setVisible(false);
             Txt_nome.setVisible(false);
-            Txt_sexo.setVisible(false);
             TxtDataNas.setVisible(false);
             Txt_CPF.setVisible(false);
             Txt_Cnpj.setVisible(false);
@@ -79,7 +76,45 @@ String operacaoAtivaGlobal ="Nenhum";
             Txt_uf.setVisible(false);
             Btn_Cadastrar.setText(operacaoAtivaGlobal + " BD");
         }
+        
+        operacao = "Excluir";
+        if(operacaoAtiva.equals(operacao)){
+            jLabel14.setVisible(true);
+            jLabel10.setVisible(false);
+            jLabel1.setVisible(false);
+            jlabel20.setVisible(false);
+            Jlabel16.setVisible(false);
+            jLabel12.setVisible(false);
+            jLabel13.setVisible(false);
+            jlabel20.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel9.setVisible(false);
+            
+            Txt_id.setVisible(true);
+            Txt_telefone.setVisible(false);
+            Txt_nome.setVisible(false);
+            TxtDataNas.setVisible(false);
+            Txt_CPF.setVisible(false);
+            Txt_Cnpj.setVisible(false);
+            txtcep.setVisible(false);
+            Txt_endereco.setVisible(false);
+            Txt_numero.setVisible(false);
+            Txt_complemento.setVisible(false);
+            Txt_bairro.setVisible(false);
+            Txt_cidade.setVisible(false);
+            Txt_uf.setVisible(false);
+            Btn_Cadastrar.setText("Pesquisar-Excluir");
+        }
     }
+
+    
+    
+    
+    
 
     
     Clientes cliente_tela = new Clientes();
@@ -96,7 +131,6 @@ String operacaoAtivaGlobal ="Nenhum";
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         Txt_numero = new javax.swing.JTextField();
         Txt_nome = new javax.swing.JTextField();
         Txt_CPF = new javax.swing.JTextField();
@@ -115,7 +149,6 @@ String operacaoAtivaGlobal ="Nenhum";
         Txt_bairro = new javax.swing.JTextField();
         Btn_limparTela = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        Txt_sexo = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         Txt_Cnpj = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -137,8 +170,6 @@ String operacaoAtivaGlobal ="Nenhum";
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 204));
         jLabel4.setText("Clientes");
-
-        jLabel5.setText("Sexo:");
 
         Txt_numero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,12 +258,6 @@ String operacaoAtivaGlobal ="Nenhum";
 
         jLabel12.setText("CPF:");
 
-        Txt_sexo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Txt_sexoActionPerformed(evt);
-            }
-        });
-
         jLabel13.setText("CNPJ:");
 
         Txt_Cnpj.addActionListener(new java.awt.event.ActionListener() {
@@ -316,17 +341,10 @@ String operacaoAtivaGlobal ="Nenhum";
                                     .addComponent(txtcep))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(Txt_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(64, 64, 64)
-                                            .addComponent(Txt_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel12)
+                                .addGap(37, 37, 37)
+                                .addComponent(Txt_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -367,9 +385,7 @@ String operacaoAtivaGlobal ="Nenhum";
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Jlabel16)
-                    .addComponent(TxtDataNas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(Txt_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtDataNas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -400,10 +416,11 @@ String operacaoAtivaGlobal ="Nenhum";
                     .addComponent(jLabel9)
                     .addComponent(Txt_uf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_Cadastrar)
-                    .addComponent(Btn_Ler)
-                    .addComponent(Btn_limparTela))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Btn_Cadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Btn_Ler)
+                        .addComponent(Btn_limparTela)))
                 .addGap(27, 27, 27))
         );
 
@@ -434,7 +451,6 @@ String operacaoAtivaGlobal ="Nenhum";
             Clientes cliente_tela = new Clientes();              
             cliente_tela.setid_cli(Integer.parseInt(Txt_id.getText()));
             cliente_tela.setnome(Txt_nome.getText());
-            cliente_tela.setsexo(Txt_sexo.getText());
             cliente_tela.setdataNascimento(TxtDataNas.getText());
             cliente_tela.setcpf(Txt_CPF.getText());
             cliente_tela.setcnpj(Txt_Cnpj.getText());
@@ -463,7 +479,6 @@ String operacaoAtivaGlobal ="Nenhum";
             Clientes cliente_tela = new Clientes();              
             cliente_tela.setid_cli(Integer.parseInt(Txt_id.getText()));
             cliente_tela.setnome(Txt_nome.getText());
-            cliente_tela.setsexo(Txt_sexo.getText());
             cliente_tela.setdataNascimento(TxtDataNas.getText());
             cliente_tela.setcpf(Txt_CPF.getText());
             cliente_tela.setcnpj(Txt_Cnpj.getText());
@@ -476,8 +491,7 @@ String operacaoAtivaGlobal ="Nenhum";
             cliente_tela.setcidade(Txt_cidade.getText());
             cliente_tela.setuf(Txt_uf.getText());
             
-            
-            
+                 
 
             
             objcon.alteraRegistroJFBD("Clientes", cliente_tela.alteraDadoSQLValues(), "ID_CLI ='" + Txt_id.getText()+"'");
@@ -495,7 +509,85 @@ String operacaoAtivaGlobal ="Nenhum";
         Txt_id.setText(Integer.toString(cliente_tela.getid_cli()));
         Txt_telefone.setText(cliente_tela.gettelefone());
         Txt_nome.setText(cliente_tela.getnome());
-        Txt_sexo.setText(cliente_tela.getsexo());
+        TxtDataNas.setText(cliente_tela.getdataNascimento());
+        Txt_CPF.setText(cliente_tela.getcpf());
+        Txt_Cnpj.setText(String.valueOf(cliente_tela.getcnpj()));
+        txtcep.setText(cliente_tela.getcep());
+        Txt_endereco.setText(cliente_tela.getendereco());
+        Txt_numero.setText(cliente_tela.getnumero());
+        Txt_complemento.setText(cliente_tela.getcomplemento());
+        Txt_bairro.setText(cliente_tela.getbairro());
+        Txt_cidade.setText(cliente_tela.getcidade());
+        Txt_uf.setText(cliente_tela.getuf());
+            
+                   
+          jLabel14.setVisible(true);
+            jLabel10.setVisible(true);
+            jLabel1.setVisible(true);
+            Jlabel16.setVisible(true);
+            jLabel12.setVisible(true);
+            jLabel13.setVisible(true);
+            jlabel20.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            
+            Txt_id.setVisible(true);
+            Txt_telefone.setVisible(true);
+            Txt_nome.setVisible(true);
+            TxtDataNas.setVisible(true);
+            Txt_CPF.setVisible(true);
+            Txt_Cnpj.setVisible(true);
+            txtcep.setVisible(true);
+            Txt_endereco.setVisible(true);
+            Txt_numero.setVisible(true);
+            Txt_complemento.setVisible(true);
+            Txt_bairro.setVisible(true);
+            Txt_cidade.setVisible(true);
+            Txt_uf.setVisible(true);
+            Btn_Cadastrar.setText("Alterar");
+            Btn_Ler.setVisible(false);
+            Btn_limparTela.setVisible(false);
+            operacaoAtivaGlobal = "Alteração";
+           
+                     
+          }
+          
+          operacao = "Exclusão";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+              connectDAO objcon = new connectDAO();
+              objcon.excluiRegistroJFBD("Clientes","ID_CLI ="+Txt_id.getText());
+                  
+        Txt_id.setText("");
+        Txt_telefone.setText(" ");
+        Txt_nome.setText("");
+        TxtDataNas.setText("");
+        Txt_CPF.setText("");
+        Txt_Cnpj.setText("");
+        txtcep.setText("");
+        Txt_endereco.setText("");
+        Txt_numero.setText("");
+        Txt_complemento.setText("");
+        Txt_bairro.setText("");
+        Txt_cidade.setText("");
+        Txt_uf.setText("");
+        this.dispose();
+ 
+          }
+          
+          operacao = "Excluir";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+              connectDAO objcon = new connectDAO();
+              cliente_tela = objcon.pesquisaClienteJFBD("CLIENTES","ID_CLI = '" + Txt_id.getText() + "'");
+          
+        Txt_id.setText(Integer.toString(cliente_tela.getid_cli()));
+        Txt_telefone.setText(cliente_tela.gettelefone());
+        Txt_nome.setText(cliente_tela.getnome());
         TxtDataNas.setText(cliente_tela.getdataNascimento());
         Txt_CPF.setText(cliente_tela.getcpf());
         Txt_Cnpj.setText(String.valueOf(cliente_tela.getcnpj()));
@@ -512,7 +604,6 @@ String operacaoAtivaGlobal ="Nenhum";
           jLabel14.setVisible(true);
             jLabel10.setVisible(true);
             jLabel1.setVisible(true);
-            jLabel5.setVisible(true);
             Jlabel16.setVisible(true);
             jLabel12.setVisible(true);
             jLabel13.setVisible(true);
@@ -524,10 +615,10 @@ String operacaoAtivaGlobal ="Nenhum";
             jLabel8.setVisible(true);
             jLabel9.setVisible(true);
             
+            
             Txt_id.setVisible(true);
             Txt_telefone.setVisible(true);
             Txt_nome.setVisible(true);
-            Txt_sexo.setVisible(true);
             TxtDataNas.setVisible(true);
             Txt_CPF.setVisible(true);
             Txt_Cnpj.setVisible(true);
@@ -538,12 +629,24 @@ String operacaoAtivaGlobal ="Nenhum";
             Txt_bairro.setVisible(true);
             Txt_cidade.setVisible(true);
             Txt_uf.setVisible(true);
-            Btn_Cadastrar.setText("Alterar");
+                                   
+            Txt_id.setEditable(false);
+            Txt_telefone.setEditable(false);
+            Txt_nome.setEditable(false);
+            TxtDataNas.setEditable(false);
+            Txt_CPF.setEditable(false);
+            Txt_Cnpj.setEditable(false);
+            txtcep.setEditable(false);
+            Txt_endereco.setEditable(false);
+            Txt_numero.setEditable(false);
+            Txt_complemento.setEditable(false);
+            Txt_bairro.setEditable(false);
+            Txt_cidade.setEditable(false);
+            Txt_uf.setEditable(false);
+            Btn_Cadastrar.setText("Excluir");
             Btn_Ler.setVisible(false);
             Btn_limparTela.setVisible(false);
-            operacaoAtivaGlobal = "Alteração";
-           
-            
+            operacaoAtivaGlobal = "Exclusão";
           
           }
           
@@ -577,7 +680,6 @@ String operacaoAtivaGlobal ="Nenhum";
         Txt_id.setText("");
         Txt_telefone.setText(" ");
         Txt_nome.setText("");
-        Txt_sexo.setText("");
         TxtDataNas.setText("");
         Txt_CPF.setText("");
         Txt_Cnpj.setText("");
@@ -595,7 +697,6 @@ String operacaoAtivaGlobal ="Nenhum";
         Txt_id.setText(Integer.toString(cliente_tela.getid_cli()));
         Txt_telefone.setText(cliente_tela.gettelefone());
         Txt_nome.setText(cliente_tela.getnome());
-        Txt_sexo.setText(cliente_tela.getsexo());
         TxtDataNas.setText(cliente_tela.getdataNascimento());
         Txt_CPF.setText(cliente_tela.getcpf());
         Txt_Cnpj.setText(String.valueOf(cliente_tela.getcnpj()));
@@ -608,10 +709,6 @@ String operacaoAtivaGlobal ="Nenhum";
         Txt_uf.setText(cliente_tela.getuf());
         
     }//GEN-LAST:event_Btn_LerActionPerformed
-
-    private void Txt_sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_sexoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Txt_sexoActionPerformed
 
     private void Txt_CnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_CnpjActionPerformed
         // TODO add your handling code here:
@@ -679,7 +776,6 @@ String operacaoAtivaGlobal ="Nenhum";
     private javax.swing.JTextField Txt_id;
     private javax.swing.JTextField Txt_nome;
     private javax.swing.JTextField Txt_numero;
-    private javax.swing.JTextField Txt_sexo;
     private javax.swing.JTextField Txt_telefone;
     private javax.swing.JTextField Txt_uf;
     private javax.swing.JLabel jLabel1;
@@ -691,7 +787,6 @@ String operacaoAtivaGlobal ="Nenhum";
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

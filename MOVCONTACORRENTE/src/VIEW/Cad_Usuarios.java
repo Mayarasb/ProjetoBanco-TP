@@ -6,6 +6,7 @@ package View;
 
 import DAO.Usuarios;
 import DAO.connectDAO;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Alunos
@@ -49,6 +50,21 @@ public class Cad_Usuarios extends javax.swing.JFrame {
             jButton1.setText(operacaoAtivaGlobal + " BD");
                         
         }      
+        
+         operacao = "Excluir";
+        if(operacaoAtiva.equals(operacao)){
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(true);
+            jLabel1.setVisible(false);
+            jLabel6.setVisible(false);
+            
+            jTextField1.setVisible(false);
+            jTextField2.setVisible(false);
+            jTextField3.setVisible(true);
+            jTextField5.setVisible(false);
+            jButton1.setText(operacaoAtivaGlobal + " BD");
+                        
+        }  
     }
     
 Usuarios usuarios_tela = new Usuarios();
@@ -114,6 +130,12 @@ Usuarios usuarios_tela = new Usuarios();
         });
 
         jLabel6.setText("Numero Conta");
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,14 +259,15 @@ Usuarios usuarios_tela = new Usuarios();
           operacao = "Alterar";
           if (operacaoAtivaGlobal.equals(operacao))
           {
+                Usuarios usuarios_tela = new Usuarios();
                 connectDAO objcon = new connectDAO();
-                usuarios_tela = objcon.pesquisaUsuarioJFBD("USUARIOS","ID = '" + jTextField3.getText() + "'");
-
-                usuarios_tela.setNumero_agencia(Integer.parseInt(jTextField5.getText()));
-                usuarios_tela.setNumero_conta(Integer.parseInt(jTextField1.getText()));
-                usuarios_tela.setSenha(jTextField2.getText());
+                usuarios_tela= objcon.pesquisaUsuarioJFBD("USUARIOS"," ID = '" + jTextField3.getText() + "'");
+                jTextField5.setText(Integer.toString(usuarios_tela.getNumero_agencia()));
+                jTextField1.setText(Integer.toString(usuarios_tela.getNumero_conta()));
+                jTextField2.setText(usuarios_tela.getSenha());
+                jTextField3.setText(usuarios_tela.getId());
                 usuarios_tela.setId(jTextField3.getText());
-              
+             
                 jLabel2.setVisible(true);
                 jLabel3.setVisible(true);
                 jLabel1.setVisible(true);
@@ -260,9 +283,61 @@ Usuarios usuarios_tela = new Usuarios();
                 operacaoAtivaGlobal = "Alteração";
                 
                 }
+          
+          operacao = "Exclusão";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+              connectDAO objcon = new connectDAO();
+              objcon.excluiRegistroJFBD("USUARIOS","ID = '" + jTextField3.getText()+ "'");
+                 
+                jTextField5.setText("");
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+                this.dispose();
+ 
+          }
+          
+           operacao = "Excluir";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+                connectDAO objcon = new connectDAO();
+                usuarios_tela = objcon.pesquisaUsuarioJFBD("USUARIOS","ID = '" + jTextField3.getText() + "'");
+               
+                jTextField5.setText(Integer.toString(usuarios_tela.getNumero_agencia()));
+                jTextField1.setText(Integer.toString(usuarios_tela.getNumero_conta()));
+                jTextField2.setText(usuarios_tela.getSenha());
+                jTextField3.setText(usuarios_tela.getId());
+                
+                jLabel2.setVisible(true);
+                jLabel3.setVisible(true);
+                jLabel1.setVisible(true);
+                jLabel6.setVisible(true);
+
+                jTextField1.setVisible(true);
+                jTextField2.setVisible(true);
+                jTextField3.setVisible(true);
+                jTextField5.setVisible(true);
+                jButton2.setVisible(false);
+                jButton3.setVisible(false);
+                
+                 jTextField1.setEditable(false);
+                jTextField2.setEditable(false);
+                jTextField3.setEditable(false);
+                jTextField5.setEditable(false);
+                jButton2.setVisible(false);
+                jButton3.setVisible(false);
+                jButton1.setText("Excluir");
+                operacaoAtivaGlobal = "Exclusão";
+                
+                }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments

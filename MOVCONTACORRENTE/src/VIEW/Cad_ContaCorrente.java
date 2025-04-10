@@ -44,6 +44,20 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
             jTextField4.setVisible(false);
             jButton1.setText(operacaoAtivaGlobal + " BD");
         }
+        
+         operacao = "Excluir";
+        if(operacaoAtiva.equals(operacao)){
+            jLabel1.setVisible(false);
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            
+            jTextField1.setVisible(false);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(false);
+            jTextField4.setVisible(false);
+            jButton1.setText(operacaoAtivaGlobal + " BD");
+        }
      }
     ContaCorrente contacorrente_tela = new ContaCorrente();
 
@@ -265,6 +279,52 @@ public class Cad_ContaCorrente extends javax.swing.JFrame {
             jButton1.setText("Alterar");
             
             operacaoAtivaGlobal = "Alteração";
+          
+          }
+          
+          operacao = "Exclusão";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+            connectDAO objcon = new connectDAO();
+            objcon.excluiRegistroJFBD("CONTACORRENTE"," NUM_CC =" + jTextField2.getText());   
+            
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            this.dispose();
+          }
+          
+           operacao = "Excluir";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+              connectDAO objcon = new connectDAO();
+              contacorrente_tela = objcon.pesquisaContaCorrenteJFBD("CONTACORRENTE"," NUM_CC = '" + jTextField2.getText() + "'");
+              
+              jTextField1.setText(Integer.toString(contacorrente_tela.getnum_agencia()));
+              jTextField2.setText(Integer.toString( contacorrente_tela.getnum_conta()));
+              jTextField3.setText(String.valueOf(contacorrente_tela.getid_cli()));
+              jTextField4.setText(String.valueOf(contacorrente_tela.getsaldo()));
+              
+            jLabel1.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            
+            jTextField1.setEditable(false);
+            jTextField2.setEditable(false);
+            jTextField3.setEditable(false);
+            jTextField4.setEditable(false);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
+            jButton1.setText("Excluir");
+            
+            operacaoAtivaGlobal = "Exclusão";
           
           }
           

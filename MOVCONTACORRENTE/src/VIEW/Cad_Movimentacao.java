@@ -60,6 +60,30 @@ public class Cad_Movimentacao extends javax.swing.JFrame {
             jTextField6.setVisible(false);
             jButton1.setText(operacaoAtivaGlobal + " BD");
         }
+        
+        operacao = "Excluir";
+        if(operacaoAtiva.equals(operacao)){
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel9.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel10.setVisible(false);
+            
+            jTextField1.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField4.setVisible(false);
+            jTextField2.setVisible(true);
+            jTextField5.setVisible(false);
+            jTextField7.setVisible(false);
+            jTextField8.setVisible(false);
+            jTextField9.setVisible(false);
+            jTextField6.setVisible(false);
+            jButton1.setText(operacaoAtivaGlobal + " BD");
+        }
     }
     Movimentacao movimentacao_tela = new Movimentacao();
     /**
@@ -360,6 +384,75 @@ public class Cad_Movimentacao extends javax.swing.JFrame {
             operacaoAtivaGlobal = "Alteração";
           }
           
+          operacao = "Exclusão";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+              connectDAO objcon = new connectDAO();
+            objcon.excluiRegistroJFBD("MOVIMENTACAO","DATA_MOV= '" + jTextField2.getText()+"'");
+                  
+            jTextField3.setText("");
+            jTextField1.setText("");
+            jTextField4.setText("");
+            jTextField4.setText("");
+            jTextField2.setText("");
+            jTextField5.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jTextField6.setText("");
+            this.dispose();
+ 
+        
+            
+        }
+          
+          operacao = "Excluir";
+          if (operacaoAtivaGlobal.equals(operacao))
+          {
+            connectDAO objcon = new connectDAO();
+            movimentacao_tela = objcon.pesquisaMovimentacaoJFBD("MOVIMENTACAO","DATA_MOV = '" + jTextField2.getText() + "'");
+            jTextField3.setText(Integer.toString(movimentacao_tela.getNum_age()));
+            jTextField1.setText(Integer.toString( movimentacao_tela.getNum_conta()));
+            jTextField4.setText(movimentacao_tela.getDocumento());
+            jTextField2.setText((movimentacao_tela.getData_mov()));
+            jTextField5.setText(movimentacao_tela.getDebito_credito());
+            jTextField7.setText(String.valueOf(movimentacao_tela.getId_His()));
+            jTextField8.setText(String.valueOf(movimentacao_tela.getCompl_His()));
+            jTextField9.setText(String.valueOf(movimentacao_tela.getValor()));
+            jTextField6.setText(String.valueOf(movimentacao_tela.getSaldo()));
+        
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel9.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel10.setVisible(true);
+            
+            jTextField1.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField5.setVisible(true);
+            jTextField7.setVisible(true);
+            jTextField8.setVisible(true);
+            jTextField9.setVisible(true);
+            jTextField6.setVisible(true);
+            
+            jTextField1.setEditable(false);
+            jTextField3.setEditable(false);
+            jTextField4.setEditable(false);
+            jTextField2.setEditable(false);
+            jTextField5.setEditable(false);
+            jTextField7.setEditable(false);
+            jTextField8.setEditable(false);
+            jTextField9.setEditable(false);
+            jTextField6.setEditable(false);
+            jButton1.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
+          }
         
         
             

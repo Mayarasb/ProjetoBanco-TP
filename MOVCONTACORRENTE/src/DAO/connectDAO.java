@@ -97,6 +97,34 @@ public class connectDAO {
         }
     }
     
+    public void excluiRegistroJFBD(String tabela, String pesquisaId){
+        
+        con = connectDB();
+        {
+           Statement stmt;
+           try{
+               stmt = con.createStatement();
+               String sql = "delete from dbo." + tabela
+                + " WHERE "+pesquisaId + ";";
+               JOptionPane.showMessageDialog(null, "String de Update " +sql);
+                                        
+                    try{
+                        stmt.executeUpdate(sql);
+                        JOptionPane.showMessageDialog(null, "Inclusão executada com sucesso!");
+                    } 
+                    catch (SQLException erro){
+                        JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                        JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                        JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                    }
+                    con.close();     
+            }
+            catch (SQLException ex){
+            Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     public Clientes pesquisaClienteJFBD (String tabela, String pesquisaId){
          
         Clientes clienteReturn = new Clientes();
@@ -384,27 +412,34 @@ public Usuarios pesquisaUsuarioJFBD (String tabela, String pesquisaId){
                
                String sql = " SELECT * FROM " + tabela
                + " WHERE "+ pesquisaId;
-               
+                JOptionPane.showMessageDialog(null, "SQL: "+sql);
                     try{                   
+                        // JOptionPane.showMessageDialog(null, "SQL pesquisar usuário " + sql);
                         ResultSet dados;
                         dados = stmt.executeQuery(sql);
+
                         if (dados.next() == false){
 
-                           JOptionPane.showMessageDialog(null, "nenhum registro foi " + "encontrado para essa pesquisa");
+                           // JOptionPane.showMessageDialog(null, "nenhum registro foi " + "encontrado para essa pesquisa");
 
                     }
                     else {
-                     
-                        usuariosReturn.setId(dados.getString(1));
-                        usuariosReturn.setSenha(dados.getString(2));
-                        usuariosReturn.setNumero_agencia(dados.getInt(3));
-                        usuariosReturn.setNumero_conta(dados.getInt(4));
+                       
+                               
                         
+                        usuariosReturn.setId(dados.getString(1));
+                       
+                        usuariosReturn.setSenha(dados.getString(2));
+                        
+                        usuariosReturn.setNumero_agencia(dados.getInt(3));
+                        
+                        usuariosReturn.setNumero_conta(dados.getInt(4));
+                       
                                                
                     }
                    
                 con.close();
-                   
+                  
                 return usuariosReturn;
                 }catch (SQLException erro){
                     JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());

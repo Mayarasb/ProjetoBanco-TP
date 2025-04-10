@@ -24,12 +24,12 @@ public class Clientes {
     private String data_nascimento;
     private String telefone;
     private String cnpj;
-    private String sexo;
+  
     
     
       public Clientes (int id_cli,String nome, String cpf, String endereco,String numero, 
             String complemento, String bairro, String cidade, String uf, String cep, String data_nascimento, 
-            String telefone, String cnpj, String sexo){
+            String telefone, String cnpj){
           
           this.id_cli = id_cli;
           this.nome = nome;
@@ -45,7 +45,7 @@ public class Clientes {
          
           this.telefone = telefone;
           this.cnpj = cnpj;
-          this.sexo = sexo;
+          
           
       }
       
@@ -90,8 +90,7 @@ public class Clientes {
         public String getcnpj() { return cnpj; }
         public void setcnpj(String cnpj) { this.cnpj = cnpj; }
         
-        public String getsexo() { return sexo; }
-        public void setsexo(String sexo) { this.sexo = sexo; }
+        
         
         public Clientes(){
             

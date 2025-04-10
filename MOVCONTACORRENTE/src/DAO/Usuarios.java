@@ -74,10 +74,10 @@ public class Usuarios {
     public String alteraDadoSQLValues(){
             String dadosUsuarios;
             dadosUsuarios = 
-            "Id = '" + this.getId() +  "'," +
-            "Nome = '" + this.getSenha()+ "'," +
-            "Endereço = '" + this.getNumero_agencia() + "'," +
-            "CNPJ = '"  + this.getNumero_conta()+ "',";
+            "ID = '" + this.getId() +  "'," +
+            "SENHA = '" + this.getSenha()+ "'," +
+            "NUM_AGE = '" + this.getNumero_agencia() + "'," +
+            "NUM_CC'"  + this.getNumero_conta()+ "',";
             
             return dadosUsuarios;
         }
