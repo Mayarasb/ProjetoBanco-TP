@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author Alunos
@@ -22,16 +22,41 @@ public class ContaCorrente {
     }
     
     public int getnum_conta() { return num_conta; }
-    public void setnum_conta (int num_conta) { this.num_conta = num_conta; }
-    
+    public void setnum_conta(int num_conta) {
+        if (num_conta <= 0) {
+            JOptionPane.showMessageDialog(null, "Número da conta deve ser maior que zero.");
+            return;
+        }
+        this.num_conta = num_conta;
+    }
+
     public int getnum_agencia() { return num_agencia; }
-    public void setnum_agencia (int num_agencia) { this.num_agencia = num_agencia; }
-    
+    public void setnum_agencia(int num_agencia) {
+        if (num_agencia <= 0) {
+            JOptionPane.showMessageDialog(null, "Número da agência deve ser maior que zero.");
+            return;
+        }
+        this.num_agencia = num_agencia;
+    }
+
     public int getid_cli() { return id_cli; }
-    public void setid_cli (int id_cli) { this.id_cli = id_cli; }
-    
+    public void setid_cli(int id_cli) {
+        if (id_cli <= 0) {
+            JOptionPane.showMessageDialog(null, "ID do cliente deve ser maior que zero.");
+            return;
+        }
+        this.id_cli = id_cli;
+    }
+
     public float getsaldo() { return saldo; }
-    public void setsaldo (float saldo) { this.saldo = saldo; }
+    public void setsaldo(float saldo) {
+        if (saldo < 0) {
+            JOptionPane.showMessageDialog(null, "Saldo não pode ser negativo.");
+            return;
+        }
+        this.saldo = saldo;
+    
+}
     
     public ContaCorrente(){
             

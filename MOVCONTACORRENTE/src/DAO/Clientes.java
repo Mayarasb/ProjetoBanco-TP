@@ -49,47 +49,114 @@ public class Clientes {
           
       }
       
-        public int getid_cli() { return id_cli; }
-        public void setid_cli(int id_cli) { this.id_cli = id_cli; }
-        
-        public String getnome() { return nome; }
-        public void setnome(String nome) { this.nome = nome; }
-        
-        public String getcpf() { return cpf; }
-        public void setcpf(String cpf) { this.cpf = cpf; }
-        
-        public String getendereco() { return endereco; }
-        public void setendereco(String endereco) { this.endereco = endereco; }
-        
-        public String getnumero() { return numero; }
-        public void setnumero(String numero) { this.numero = numero; }
-        
-        public String getcomplemento() { return complemento; }
-        public void setcomplemento(String complemento) { this.complemento = complemento; }
-        
-        public String getbairro() { return bairro; }
-        public void setbairro(String bairro) { this.bairro = bairro; }
-        
-        public String getcidade() { return cidade; }
-        public void setcidade(String cidade) { this.cidade = cidade; }
-        
-        public String getuf() { return uf; }
-        public void setuf(String uf) { this.uf = uf; }
-        
-        public String getcep() { return cep; }
-        public void setcep(String cep) { this.cep = cep; }
-        
-        public String getdataNascimento() { return data_nascimento; }
-        public void setdataNascimento(String data_nascimento) { this.data_nascimento = data_nascimento; }
-        
-       
-        
-        public String gettelefone() { return telefone; }
-        public void settelefone(String telefone) { this.telefone = telefone; }
-        
-        public String getcnpj() { return cnpj; }
-        public void setcnpj(String cnpj) { this.cnpj = cnpj; }
-        
+     public int getid_cli() { return id_cli; }
+    public void setid_cli(int id_cli) {
+        if (id_cli <= 0) {
+            JOptionPane.showMessageDialog(null, "ID do cliente deve ser maior que zero.");
+            return;
+        }
+        this.id_cli = id_cli;
+    }
+
+    public String getnome() { return nome; }
+    public void setnome(String nome) {
+        if (nome == null || nome.isBlank() || nome.length() < 4) {
+            JOptionPane.showMessageDialog(null, "Nome deve ter no mínimo 4 caracteres.");
+            return;
+        }
+        this.nome = nome.trim();
+    }
+
+    public String getcpf() { return cpf; }
+    public void setcpf(String cpf) {
+        if (cpf == null || cpf.isBlank() || cpf.length() != 11) {
+            JOptionPane.showMessageDialog(null, "CPF deve ter exatamente 11 dígitos.");
+            return;
+        }
+        this.cpf = cpf.trim();
+    }
+
+    public String getendereco() { return endereco; }
+    public void setendereco(String endereco) {
+        if (endereco == null || endereco.isBlank() || endereco.length() < 4) {
+            JOptionPane.showMessageDialog(null, "Endereço deve ter no mínimo 4 caracteres.");
+            return;
+        }
+        this.endereco = endereco.trim();
+    }
+
+    public String getnumero() { return numero; }
+    public void setnumero(String numero) {
+        if (numero == null || numero.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Número não pode ser vazio.");
+            return;
+        }
+        this.numero = numero.trim();
+    }
+
+    public String getcomplemento() { return complemento; }
+    public void setcomplemento(String complemento) {
+        this.complemento = (complemento != null) ? complemento.trim() : "";
+    }
+
+    public String getbairro() { return bairro; }
+    public void setbairro(String bairro) {
+        this.bairro = (bairro != null) ? bairro.trim() : "";
+    }
+
+    public String getcidade() { return cidade; }
+    public void setcidade(String cidade) {
+        if (cidade == null || cidade.isBlank() || cidade.length() < 4) {
+            JOptionPane.showMessageDialog(null, "Cidade deve ter no mínimo 4 caracteres.");
+            return;
+        }
+        this.cidade = cidade.trim();
+    }
+
+    public String getuf() { return uf; }
+    public void setuf(String uf) {
+        if (uf == null || uf.isBlank() || uf.length() != 2) {
+            JOptionPane.showMessageDialog(null, "UF deve ter exatamente 2 letras.");
+            return;
+        }
+        this.uf = uf.trim().toUpperCase();
+    }
+
+    public String getcep() { return cep; }
+    public void setcep(String cep) {
+        if (cep == null || cep.isBlank() || cep.length() < 8) {
+            JOptionPane.showMessageDialog(null, "CEP deve ter no mínimo 8 caracteres.");
+            return;
+        }
+        this.cep = cep.trim();
+    }
+
+    public String getdataNascimento() { return data_nascimento; }
+    public void setdataNascimento(String data_nascimento) {
+        if (data_nascimento == null || data_nascimento.isBlank() || data_nascimento.length() < 8) {
+            JOptionPane.showMessageDialog(null, "Data de nascimento deve ter no mínimo 8 caracteres.");
+            return;
+        }
+        this.data_nascimento = data_nascimento.trim();
+    }
+
+    public String gettelefone() { return telefone; }
+    public void settelefone(String telefone) {
+        if (telefone == null || telefone.isBlank() || telefone.length() < 8) {
+            JOptionPane.showMessageDialog(null, "Telefone deve ter no mínimo 8 caracteres.");
+            return;
+        }
+        this.telefone = telefone.trim();
+    }
+
+    public String getcnpj() { return cnpj; }
+    public void setcnpj(String cnpj) {
+        if (cnpj == null || cnpj.isBlank() || cnpj.length() != 14) {
+            JOptionPane.showMessageDialog(null, "CNPJ deve ter exatamente 14 dígitos.");
+            return;
+        }
+        this.cnpj = cnpj.trim();
+    }
         
         
         public Clientes(){

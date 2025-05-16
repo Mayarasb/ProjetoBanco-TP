@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author Alunos
@@ -26,11 +26,15 @@ public class Movimentacao {
     
 }
 
-    public int getNum_conta() {
+  public int getNum_conta() {
         return num_conta;
     }
 
     public void setNum_conta(int num_conta) {
+        if (num_conta <= 0) {
+            JOptionPane.showMessageDialog(null, "Número da conta deve ser maior que zero.");
+            return;
+        }
         this.num_conta = num_conta;
     }
 
@@ -39,6 +43,10 @@ public class Movimentacao {
     }
 
     public void setNum_age(int num_age) {
+        if (num_age <= 0) {
+            JOptionPane.showMessageDialog(null, "Número da agência deve ser maior que zero.");
+            return;
+        }
         this.num_age = num_age;
     }
 
@@ -47,6 +55,10 @@ public class Movimentacao {
     }
 
     public void setDocumento(String documento) {
+        if (documento == null || documento.isBlank() || documento.length() < 4) {
+            JOptionPane.showMessageDialog(null, "Documento deve ter no mínimo 4 caracteres.");
+            return;
+        }
         this.documento = documento;
     }
 
@@ -55,6 +67,10 @@ public class Movimentacao {
     }
 
     public void setData_mov(String data_mov) {
+        if (data_mov == null || data_mov.isBlank() || data_mov.length() < 4) {
+            JOptionPane.showMessageDialog(null, "Data da movimentação deve ter no mínimo 4 caracteres.");
+            return;
+        }
         this.data_mov = data_mov;
     }
 
@@ -63,6 +79,10 @@ public class Movimentacao {
     }
 
     public void setDebito_credito(String debito_credito) {
+        if (debito_credito == null || debito_credito.isBlank() || debito_credito.length() < 4) {
+            JOptionPane.showMessageDialog(null, "Campo Débito/Crédito deve ter no mínimo 4 caracteres.");
+            return;
+        }
         this.debito_credito = debito_credito;
     }
 
@@ -71,6 +91,10 @@ public class Movimentacao {
     }
 
     public void setId_His(int id_His) {
+        if (id_His <= 0) {
+            JOptionPane.showMessageDialog(null, "ID do histórico deve ser maior que zero.");
+            return;
+        }
         this.id_His = id_His;
     }
 
@@ -79,6 +103,10 @@ public class Movimentacao {
     }
 
     public void setCompl_His(String Compl_His) {
+        if (Compl_His == null || Compl_His.isBlank() || Compl_His.length() < 4) {
+            JOptionPane.showMessageDialog(null, "Complemento do histórico deve ter no mínimo 4 caracteres.");
+            return;
+        }
         this.Compl_His = Compl_His;
     }
 
@@ -87,6 +115,10 @@ public class Movimentacao {
     }
 
     public void setValor(float Valor) {
+        if (Valor <= 0) {
+            JOptionPane.showMessageDialog(null, "Valor da movimentação deve ser maior que zero.");
+            return;
+        }
         this.Valor = Valor;
     }
 
@@ -95,6 +127,10 @@ public class Movimentacao {
     }
 
     public void setSaldo(float Saldo) {
+        if (Saldo < 0) {
+            JOptionPane.showMessageDialog(null, "Saldo não pode ser negativo.");
+            return;
+        }
         this.Saldo = Saldo;
     }
 

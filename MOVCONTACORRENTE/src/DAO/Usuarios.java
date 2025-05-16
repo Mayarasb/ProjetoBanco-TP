@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-
+import javax.swing.JOptionPane;
 
 
 /**
@@ -30,6 +30,10 @@ public class Usuarios {
     }
 
     public void setNumero_agencia(int numero_agencia) {
+        if (numero_agencia <= 0) {
+            JOptionPane.showMessageDialog(null, "Número da agência deve ser maior que zero.");
+            return;
+        }
         this.numero_agencia = numero_agencia;
     }
 
@@ -38,6 +42,10 @@ public class Usuarios {
     }
 
     public void setNumero_conta(int numero_conta) {
+        if (numero_conta <= 0) {
+            JOptionPane.showMessageDialog(null, "Número da conta deve ser maior que zero.");
+            return;
+        }
         this.numero_conta = numero_conta;
     }
 
@@ -46,6 +54,10 @@ public class Usuarios {
     }
 
     public void setSenha(String senha) {
+        if (senha == null || senha.isBlank() || senha.length() < 4) {
+            JOptionPane.showMessageDialog(null, "A senha deve ter no mínimo 4 caracteres.");
+            return;
+        }
         this.senha = senha;
     }
 
@@ -54,10 +66,13 @@ public class Usuarios {
     }
 
     public void setId(String Id) {
+        if (Id == null || Id.isBlank() || Id.length() < 4) {
+            JOptionPane.showMessageDialog(null, "O ID deve ter no mínimo 4 caracteres.");
+            return;
+        }
         this.Id = Id;
     }
-    
-    
+
     public Usuarios (){
     }
     

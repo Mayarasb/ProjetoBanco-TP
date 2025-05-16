@@ -5,13 +5,14 @@
 package DAO;
  
  
-//import java.util.List;
+
+import java.util.List;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -184,6 +185,76 @@ public class connectDAO {
         return clienteReturn;
     }
     
+    public List<Clientes> consultaRegistroClienteBD () {
+      
+        con = connectDB();
+        
+        List<Clientes> clientes = new ArrayList<>();
+        
+        Statement stmt;
+        
+        try{
+            stmt = con.createStatement();
+            String sql= "SELECT * FROM CLIENTES";
+            
+            try{
+                 ResultSet dados = stmt.executeQuery(sql);
+                 JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
+                 int i = 0;
+                 while (dados.next()) {
+                     if (i==0)
+                     {
+                         i++;
+                         Clientes Cliente = new Clientes(
+                         0,
+                         "NOME_CLI",
+                         "ENDE_CLI",
+                         "NUME_CLI",
+                         "COMPL_CLI",
+                         "BAI_CLI",
+                         "CIDA_CLI",
+                         "UF_CLI",
+                         "CEP_CLI",
+                         "FONE_CLI",
+                         "CPF_CLI",
+                         "DATA_NASC",
+                         "CNPJ_CLI");
+
+                         clientes.add(Cliente);
+                    }
+
+                    Clientes Cliente = new Clientes (
+                        dados.getInt("ID_CLI"),
+                        dados.getString("NOME_CLI"),
+                        dados.getString("ENDE_CLI"),
+                        dados.getString("NUME_CLI"),
+                        dados.getString("COMPL_CLI"),
+                        dados.getString("BAI_CLI"),
+                        dados.getString("CIDA_CLI"),
+                        dados.getString("UF_CLI"),
+                        dados.getString("CEP_CLI"),
+                        dados.getString("FONE_CLI"),
+                        dados.getString("CPF_CLI"),
+                        dados.getString("DATA_NASC"),
+                        dados.getString( "CNPJ_CLI")
+                    );
+                    clientes.add(Cliente);
+                }
+                    con.close();
+                    return clientes;
+
+             }catch (SQLException erro){
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                }
+               
+            con.close();
+            }catch (SQLException ex){
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE,null, ex);
+            }
+            return null;
+        }
     public Agencias pesquisaAgenciasJFBD (String tabela, String pesquisaId){
          
         Agencias agenciaReturn = new Agencias();
@@ -241,6 +312,75 @@ public class connectDAO {
         return agenciaReturn;
     }
     
+    public List<Agencias> consultaRegistroAgenciaBD () {
+      
+        con = connectDB();
+        
+        List<Agencias> agencias = new ArrayList<>();
+        
+        Statement stmt;
+        
+        try{
+            stmt = con.createStatement();
+            String sql= "SELECT * FROM AGENCIAS";
+            
+            try{
+                 ResultSet dados = stmt.executeQuery(sql);
+                 JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
+                 int i = 0;
+                 while (dados.next()) {
+                     if (i==0)
+                     {
+                         i++;
+                         Agencias Cad_Agencias = new Agencias(
+                         0,
+                         "NOME_AGE",
+                         "ENDE_AGE",
+                         "NUME_AGE",
+                         "COMPL_AGE",
+                         "BAIR_AGE",
+                         "CIDA_AGE",
+                         "UF_AGE",
+                         "CEP_AGE",
+                         "FONE_AGE"
+                         );
+
+                         agencias.add(Cad_Agencias);
+                    }
+
+                    Agencias Cad_Agencias = new Agencias(
+                        dados.getInt("ID_CLI"),
+                        dados.getString("NOME_AGE"),
+                        dados.getString("ENDE_AGE"),
+                        dados.getString("NUME_AGE"),
+                        dados.getString("COMPL_AGE"),
+                        dados.getString("BAIR_AGE"),
+                        dados.getString("CIDA_AGE"),
+                        dados.getString("UF_AGE"),
+                        dados.getString("CEP_AGE"),
+                        dados.getString("FONE_AGE")
+                       
+                    );
+                   
+                    agencias.add(Cad_Agencias);
+
+                }
+                    con.close();
+                    return agencias;
+
+             }catch (SQLException erro){
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                }
+               
+            con.close();
+            }catch (SQLException ex){
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE,null, ex);
+            }
+            return null;
+        }
+    
     public ContaCorrente pesquisaContaCorrenteJFBD(String tabela, String pesquisaId){
          
         ContaCorrente ContaCorrenteReturn = new ContaCorrente();
@@ -294,6 +434,65 @@ public class connectDAO {
         return ContaCorrenteReturn;
     }
     
+        public List<ContaCorrente> consultaRegistroContaCorrenteBD () {
+      
+        con = connectDB();
+        
+        List<ContaCorrente> contaCorrentes = new ArrayList<>();
+        
+        Statement stmt;
+        
+        try{
+            stmt = con.createStatement();
+            String sql= "SELECT * FROM CONTACORRENTE";
+            
+            try{
+                 ResultSet dados = stmt.executeQuery(sql);
+                 JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
+                 int i = 0;
+                 while (dados.next()) {
+                     if (i==0)
+                     {
+                         i++;
+                         ContaCorrente Cad_ContaCorrente = new ContaCorrente(
+                         0,
+                         0,
+                         0,
+                         0
+                         
+                         );
+
+                         contaCorrentes.add(Cad_ContaCorrente);
+                    }
+
+                    ContaCorrente Cad_ContaCorrente = new ContaCorrente(
+                        dados.getInt("NUM_AGE"),
+                        dados.getInt("NUM_CC"),
+                        dados.getInt("ID_CLI"),
+                        dados.getFloat("SALDO")
+                        
+                       
+                    );
+                   
+                    contaCorrentes.add(Cad_ContaCorrente);
+
+                }
+                    con.close();
+                    return contaCorrentes;
+
+             }catch (SQLException erro){
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                }
+               
+            con.close();
+            }catch (SQLException ex){
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE,null, ex);
+            }
+            return null;
+        }
+    
     public Historicos pesquisaHistoricosJFBD (String tabela, String pesquisaId){
          
         Historicos historicoReturn = new Historicos();
@@ -342,7 +541,61 @@ public class connectDAO {
          
         return historicoReturn;
     }
-public Movimentacao pesquisaMovimentacaoJFBD (String tabela, String pesquisaId){
+    
+       public List<Historicos> consultaHistoricoAgenciaBD () {
+      
+        con = connectDB();
+        
+        List<Historicos> historicos = new ArrayList<>();
+        
+        Statement stmt;
+        
+        try{
+            stmt = con.createStatement();
+            String sql= "SELECT * FROM HISTORICOS";
+            
+            try{
+                 ResultSet dados = stmt.executeQuery(sql);
+                 JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
+                 int i = 0;
+                 while (dados.next()) {
+                     if (i==0)
+                     {
+                         i++;
+                         Historicos Cad_Historicos = new Historicos(
+                         0,
+                         "DES_HIS"
+                        );
+
+                         historicos.add(Cad_Historicos);
+                    }
+
+                   Historicos Cad_Historicos = new Historicos(
+                        dados.getInt("ID_HIS"),
+                        dados.getString("DES_HIS")
+                        
+                    );
+                   
+                    historicos.add(Cad_Historicos);
+
+                }
+                    con.close();
+                    return historicos;
+
+             }catch (SQLException erro){
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                }
+               
+            con.close();
+            }catch (SQLException ex){
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE,null, ex);
+            }
+            return null;
+        }
+       
+    public Movimentacao pesquisaMovimentacaoJFBD (String tabela, String pesquisaId){
          
         Movimentacao movimentacaoReturn = new Movimentacao();
         String tabelaSGBD = "MOVIMENTACAO";
@@ -398,7 +651,76 @@ public Movimentacao pesquisaMovimentacaoJFBD (String tabela, String pesquisaId){
         return movimentacaoReturn;
     }
 
-public Usuarios pesquisaUsuarioJFBD (String tabela, String pesquisaId){
+        public List<Movimentacao> consultaRegistroMovimentacaoBD () {
+      
+        con = connectDB();
+        
+        List<Movimentacao> movimentacao = new ArrayList<>();
+        
+        Statement stmt;
+        
+        try{
+            stmt = con.createStatement();
+            String sql= "SELECT * FROM MOVIMENTACAO";
+            
+            try{
+                 ResultSet dados = stmt.executeQuery(sql);
+                 JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
+                 int i = 0;
+                 while (dados.next()) {
+                     if (i==0)
+                     {
+                         i++;
+                         Movimentacao Cad_Movimentacao = new Movimentacao(
+                         0,
+                         0,
+                         "DATA_MOV",
+                         "NUM_DOCTO",
+                         "DEBITO_CREDITO",
+                         0,
+                         "COMPL_HIS",
+                         0,
+                         0
+                         );
+
+                         movimentacao.add(Cad_Movimentacao);
+                    }
+
+                    Movimentacao Cad_Movimentacao = new Movimentacao(
+                        dados.getInt("NUM_AGE"),
+                        dados.getInt("NUM_CC"),
+                        dados.getString("DATA_MOV"),
+                        dados.getString("NUM_DOCTO"),
+                        dados.getString("DEBITO_CREDITO"),
+                        dados.getInt("ID_HIS"),
+                        dados.getString("COMPL_HIS"),
+                        dados.getInt("VALOR"),
+                        dados.getInt("SALDO")
+                        
+                       
+                    );
+                   
+                     movimentacao.add(Cad_Movimentacao);
+
+                }
+                    con.close();
+                    return movimentacao;
+
+             }catch (SQLException erro){
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                }
+               
+            con.close();
+            }catch (SQLException ex){
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE,null, ex);
+            }
+            return null;
+        }
+    
+    
+    public Usuarios pesquisaUsuarioJFBD (String tabela, String pesquisaId){
          
         Usuarios usuariosReturn = new Usuarios();
         String tabelaSGBD = "USUARIOS";
@@ -456,6 +778,64 @@ public Usuarios pesquisaUsuarioJFBD (String tabela, String pesquisaId){
          
         return usuariosReturn;
     }
+    
+        public List<Usuarios> consultaUsuariosBD () {
+      
+        con = connectDB();
+        
+        List<Usuarios> usuarios = new ArrayList<>();
+        
+        Statement stmt;
+        
+        try{
+            stmt = con.createStatement();
+            String sql= "SELECT * FROM USUARIOS";
+            
+            try{
+                 ResultSet dados = stmt.executeQuery(sql);
+                 JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
+                 int i = 0;
+                 while (dados.next()) {
+                     if (i==0)
+                     {
+                         i++;
+                         Usuarios Cad_Usuarios = new Usuarios(
+                         0,
+                         0,
+                         "ID ",                    
+                         "SENHA"
+                        );
+
+                         usuarios.add(Cad_Usuarios);
+                    }
+
+                        Usuarios Cad_Usuarios = new Usuarios(
+                        dados.getInt("ID"),
+                        dados.getInt("SENHA"),
+                        dados.getString("NUM_AGE"),
+                        dados.getString("NUM_CC")
+                        
+                    );
+                   
+                    usuarios.add(Cad_Usuarios);
+
+                }
+                    con.close();
+                    return usuarios;
+
+             }catch (SQLException erro){
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                }
+               
+            con.close();
+            }catch (SQLException ex){
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE,null, ex);
+            }
+            return null;
+        }
+      
 }
     
     
