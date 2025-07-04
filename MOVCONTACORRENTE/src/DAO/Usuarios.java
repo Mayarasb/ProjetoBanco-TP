@@ -66,8 +66,8 @@ public class Usuarios {
     }
 
     public void setId(String Id) {
-        if (Id == null || Id.isBlank() || Id.length() < 4) {
-            JOptionPane.showMessageDialog(null, "O ID deve ter no mínimo 4 caracteres.");
+        if (Id == null || Id.isBlank() ) {
+            JOptionPane.showMessageDialog(null, "O ID não pode ser nulo ou em Branco.");
             return;
         }
         this.Id = Id;
@@ -92,7 +92,7 @@ public class Usuarios {
             "ID = '" + this.getId() +  "'," +
             "SENHA = '" + this.getSenha()+ "'," +
             "NUM_AGE = '" + this.getNumero_agencia() + "'," +
-            "NUM_CC'"  + this.getNumero_conta()+ "',";
+            "NUM_CC = '"  + this.getNumero_conta()+ "'";
             
             return dadosUsuarios;
         }

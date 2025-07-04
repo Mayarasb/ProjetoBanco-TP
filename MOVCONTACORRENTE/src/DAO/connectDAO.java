@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 */
 public class connectDAO {
     Connection con;
+    public ResultSet consultaRegistroClienteRSBD;
     public Connection connectDB(){
         JOptionPane.showMessageDialog(null, "Inicia a classe para conexão com SQL SERVER!");
  
@@ -83,7 +84,7 @@ public class connectDAO {
                                         
                     try{
                         stmt.executeUpdate(sql);
-                        JOptionPane.showMessageDialog(null, "Inclusão executada com sucesso!");
+                        JOptionPane.showMessageDialog(null, "Alteração executada com sucesso!");
                     } 
                     catch (SQLException erro){
                         JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
@@ -111,7 +112,7 @@ public class connectDAO {
                                         
                     try{
                         stmt.executeUpdate(sql);
-                        JOptionPane.showMessageDialog(null, "Inclusão executada com sucesso!");
+                        JOptionPane.showMessageDialog(null, "Exclusão executada com sucesso!");
                     } 
                     catch (SQLException erro){
                         JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
@@ -312,74 +313,6 @@ public class connectDAO {
         return agenciaReturn;
     }
     
-    public List<Agencias> consultaRegistroAgenciaBD () {
-      
-        con = connectDB();
-        
-        List<Agencias> agencias = new ArrayList<>();
-        
-        Statement stmt;
-        
-        try{
-            stmt = con.createStatement();
-            String sql= "SELECT * FROM AGENCIAS";
-            
-            try{
-                 ResultSet dados = stmt.executeQuery(sql);
-                 JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
-                 int i = 0;
-                 while (dados.next()) {
-                     if (i==0)
-                     {
-                         i++;
-                         Agencias Cad_Agencias = new Agencias(
-                         0,
-                         "NOME_AGE",
-                         "ENDE_AGE",
-                         "NUME_AGE",
-                         "COMPL_AGE",
-                         "BAIR_AGE",
-                         "CIDA_AGE",
-                         "UF_AGE",
-                         "CEP_AGE",
-                         "FONE_AGE"
-                         );
-
-                         agencias.add(Cad_Agencias);
-                    }
-
-                    Agencias Cad_Agencias = new Agencias(
-                        dados.getInt("ID_CLI"),
-                        dados.getString("NOME_AGE"),
-                        dados.getString("ENDE_AGE"),
-                        dados.getString("NUME_AGE"),
-                        dados.getString("COMPL_AGE"),
-                        dados.getString("BAIR_AGE"),
-                        dados.getString("CIDA_AGE"),
-                        dados.getString("UF_AGE"),
-                        dados.getString("CEP_AGE"),
-                        dados.getString("FONE_AGE")
-                       
-                    );
-                   
-                    agencias.add(Cad_Agencias);
-
-                }
-                    con.close();
-                    return agencias;
-
-             }catch (SQLException erro){
-                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
-                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
-                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
-                }
-               
-            con.close();
-            }catch (SQLException ex){
-                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE,null, ex);
-            }
-            return null;
-        }
     
     public ContaCorrente pesquisaContaCorrenteJFBD(String tabela, String pesquisaId){
          
@@ -835,7 +768,49 @@ public class connectDAO {
             }
             return null;
         }
-      
+              
+        public ResultSet consultaRegistroClienteRSBD(){
+        con = connectDB();
+        Statement stmt;
+        try {
+            stmt = con.createStatement();
+            String sql = "SELECT * FROM CLIENTES";
+            try {
+                ResultSet dados = stmt.executeQuery(sql);
+                JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
+                return dados;
+            } catch (SQLException erro) {
+                 JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                     JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                     JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - código => "+erro.getErrorCode());
+                }
+            con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return null;
+        }
+        
+        public ResultSet ConsultaTabela(String tabela){
+        con = connectDB();
+        Statement stmt;
+        try {
+            stmt = con.createStatement();
+            String sql = "SELECT * FROM " + tabela;
+            try {
+                ResultSet dados;
+                dados = stmt.executeQuery(sql);
+                return dados;
+            } catch(SQLException erro){
+                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+            }
+        } catch(SQLException ex){
+            Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }
     
     

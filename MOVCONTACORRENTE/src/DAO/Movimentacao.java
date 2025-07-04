@@ -79,8 +79,8 @@ public class Movimentacao {
     }
 
     public void setDebito_credito(String debito_credito) {
-        if (debito_credito == null || debito_credito.isBlank() || debito_credito.length() < 4) {
-            JOptionPane.showMessageDialog(null, "Campo Débito/Crédito deve ter no mínimo 4 caracteres.");
+        if (debito_credito == null || debito_credito.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Campo Débito/Crédito não pode ser nulo ou em Branco");
             return;
         }
         this.debito_credito = debito_credito;

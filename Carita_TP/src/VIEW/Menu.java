@@ -31,6 +31,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,14 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem13);
 
+        jMenuItem3.setText("Consultar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -80,25 +89,31 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         String operacao = "Incluir";
-        Tela_Usuario Cad_Usuario = new Tela_Usuario(operacao);
-        Cad_Usuario.setVisible(true);
+        Tela_Login Cad_Login = new Tela_Login(operacao);
+        Cad_Login.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         String operacao = "Alterar";
-        Tela_Usuario Cad_Usuario = new Tela_Usuario(operacao);
-        Cad_Usuario.setVisible(true);
+        Tela_Login Cad_Login = new Tela_Login(operacao);
+        Cad_Login.setVisible(true);
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         String operacao = "Excluir";
-        Tela_Usuario Cad_Usuario = new Tela_Usuario(operacao);
-         Cad_Usuario.setVisible(true);
+        Tela_Login Cad_Login = new Tela_Login(operacao);
+         Cad_Login.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+            // TODO add your handling code here:
+            ConsultaLogin acesso_tabela = new ConsultaLogin ("Login");
+            acesso_tabela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +156,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
 

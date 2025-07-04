@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import MODEL.Usuario;
+import MODEL.Login;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -26,7 +26,7 @@ public class connectDAO {
     public Connection connectDB(){
         JOptionPane.showMessageDialog(null, "Inicia a classe para conexão com SQL SERVER!");
  
-        String caminho = "jdbc:sqlserver://localhost:1433;databaseName=USUARIOS;"
+        String caminho = "jdbc:sqlserver://localhost:1433;databaseName=LOGIN;"
                 + "encrypt=true;trustServerCertificate=true;"; 
         String usuario = "sa";
         String senha = ".";
@@ -82,7 +82,7 @@ public class connectDAO {
                                         
                     try{
                         stmt.executeUpdate(sql);
-                        JOptionPane.showMessageDialog(null, "Inclusão executada com sucesso!");
+                        JOptionPane.showMessageDialog(null, "Alteração executada com sucesso!");
                     } 
                     catch (SQLException erro){
                         JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
@@ -110,7 +110,7 @@ public class connectDAO {
                                         
                     try{
                         stmt.executeUpdate(sql);
-                        JOptionPane.showMessageDialog(null, "Inclusão executada com sucesso!");
+                        JOptionPane.showMessageDialog(null, "Exclusão executada com sucesso!");
                     } 
                     catch (SQLException erro){
                         JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
@@ -125,10 +125,10 @@ public class connectDAO {
         }
     }
   
-  public Usuario pesquisaUsuarioJFBD (String tabela, String pesquisaId){
+  public Login pesquisaLoginJFBD (String tabela, String pesquisaId){
          
-        Usuario clienteReturn = new Usuario();
-        String tabelaSGBD = "USUARIOS";
+        Login clienteReturn = new Login();
+        String tabelaSGBD = "LOGIN";
         if(tabela.equals(tabelaSGBD)){
          
             con = connectDB();
@@ -177,17 +177,17 @@ public class connectDAO {
         return clienteReturn;
     }
   
-  public List<Usuario> consultaRegistroUsuarioBD () {
+  public List<Login> consultaRegistroLoginBD () {
       
         con = connectDB();
         
-        List<Usuario> usuarios = new ArrayList<>();
+        List<Login> usuarios = new ArrayList<>();
         
         Statement stmt;
         
         try{
             stmt = con.createStatement();
-            String sql= "SELECT * FROM USUARIOS";
+            String sql= "SELECT * FROM LOGIN";
             
             try{
                  ResultSet dados = stmt.executeQuery(sql);
@@ -197,7 +197,7 @@ public class connectDAO {
                      if (i==0)
                      {
                          i++;
-                          Usuario Tela_Usuario = new Usuario(
+                          Login Tela_Login = new Login(
                          
                          "ID",
                          "NOME",
@@ -205,17 +205,17 @@ public class connectDAO {
                          "EMAIL",
                          "SENHA");
 
-                         usuarios.add(Tela_Usuario);
+                         usuarios.add(Tela_Login);
                     }
 
-                    Usuario Tela_Usuario = new Usuario (
+                    Login Tela_Login = new Login (
                         dados.getString("ID"),
                         dados.getString("NOME"),
                         dados.getString("CPF"),
                         dados.getString("EMAIL"),
                         dados.getString("SENHA")
                     );
-                    usuarios.add(Tela_Usuario);
+                    usuarios.add(Tela_Login);
                 }
                     con.close();
                     return usuarios;
@@ -232,4 +232,47 @@ public class connectDAO {
             }
             return null;
         }
+  
+  public ResultSet consultaRegistroClienteRSBD(){
+        con = connectDB();
+        Statement stmt;
+        try {
+            stmt = con.createStatement();
+            String sql = "SELECT * FROM CLIENTES";
+            try {
+                ResultSet dados = stmt.executeQuery(sql);
+                JOptionPane.showMessageDialog(null, "Select executado com sucesso!");
+                return dados;
+            } catch (SQLException erro) {
+                 JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                     JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                     JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - código => "+erro.getErrorCode());
+                }
+            con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return null;
+        }
+  
+  public ResultSet ConsultaLogin(String tabela){
+        con = connectDB();
+        Statement stmt;
+        try {
+            stmt = con.createStatement();
+            String sql = "SELECT * FROM " + tabela;
+            try {
+                ResultSet dados;
+                dados = stmt.executeQuery(sql);
+                return dados;
+            } catch(SQLException erro){
+                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+            }
+        } catch(SQLException ex){
+            Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

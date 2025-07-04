@@ -5,6 +5,8 @@
 package View;
 import DAO.Historicos;
 import DAO.connectDAO;
+import java.sql.ResultSet;
+import net.proteanit.sql.DbUtils;
 /**
  *
  * @author Alunos
@@ -15,7 +17,8 @@ String operacaoAtivaGlobal ="Nenhum";
      * Creates new form Cad_Historicos
      */
     public Cad_Historicos() {
-        initComponents();
+     initComponents();
+            
     }
     
      public Cad_Historicos(String operacaoAtiva){
@@ -127,7 +130,7 @@ String operacaoAtivaGlobal ="Nenhum";
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +150,7 @@ String operacaoAtivaGlobal ="Nenhum";
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
